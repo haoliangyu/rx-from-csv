@@ -1,0 +1,45 @@
+{
+  "name": "rx-from-csv",
+  "version": "0.1.0",
+  "description": " RxJS 5 operator to load csv file",
+  "main": "dist/rx-from-csv.js",
+  "scripts": {
+    "test": "mocha test/**/*.test.js --require babel-register",
+    "build": "babel src --out-dir dist",
+    "prepush": "npm test",
+    "prepublish": "npm test && npm run build"
+  },
+  "types": "typescript/rx-from-csv.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoliangyu/rx-from-csv.git"
+  },
+  "keywords": [
+    "rxjs",
+    "oeprator",
+    "read",
+    "csv"
+  ],
+  "author": "Haoliang Yu <haholiang.yu@outlook.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/haoliangyu/rx-from-csv/issues"
+  },
+  "homepage": "https://github.com/haoliangyu/rx-from-csv#README",
+  "devDependencies": {
+    "babel": "^6.23.0",
+    "babel-cli": "^6.24.1",
+    "babel-core": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-preset-env": "^1.4.0",
+    "babel-register": "^6.24.1",
+    "chai": "^3.5.0",
+    "eslint": "^3.19.0",
+    "husky": "^0.13.3",
+    "mocha": "^3.3.0"
+  },
+  "dependencies": {
+    "lodash.defaults": "^4.2.0",
+    "rxjs": "^5.4.0"
+  }
+}

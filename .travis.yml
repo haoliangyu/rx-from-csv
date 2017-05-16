@@ -1,0 +1,12 @@
+language: node_js
+
+node_js:
+  - "node"
+
+install:
+  - yarn
+
+script:
+- npm test
+
+cache: yarn
