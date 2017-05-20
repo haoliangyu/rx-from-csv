@@ -35,7 +35,8 @@ describe('fromCSV()', () => {
       }, noop, () => {
         expect(rows).to.deep.equal([
           { id: '1', name: 'Mike' },
-          { id: '2', name: 'Tommy' }
+          { id: '2', name: 'Tommy' },
+          { id: '3', name: 'Tommy, Hord' }
         ]);
 
         done();

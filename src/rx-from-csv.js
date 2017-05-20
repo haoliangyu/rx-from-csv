@@ -27,10 +27,10 @@ function fromCSV(path, options) {
 
     reader.on('line', (line) => {
       if (isHeader) {
-        columns = line.split(options.delimeter).map((column) => removeTextWrapper(column));
+        columns = parseRow(line, options.delimeter);
         isHeader = false;
       } else {
-        let values = line.split(options.delimeter).map((value) => removeTextWrapper(value));
+        let values = parseRow(line, options.delimeter);
         let valueObject = {};
 
         for (let i = 0, n = columns.length; i < n; i++) {
@@ -44,6 +44,31 @@ function fromCSV(path, options) {
     reader.on('close', () => subscriber.complete());
     reader.on('pause', () => subscriber.complete());
     readStream.on('error', (error) => subscriber.error(error));
+  });
+}
+
+function parseRow(row, delimeter) {
+  let values = [];
+  let wrapped = false;
+  let wordStart = 0;
+
+  for (let i = 0, n = row.length; i < n; i++) {
+    if (row[i] === '"') {
+      wrapped = !wrapped;
+    } else if (row[i] === delimeter && !wrapped) {
+      values.push(row.slice(wordStart, i));
+      wordStart = i + 1;
+    }
+  }
+
+  values.push(row.slice(wordStart));
+
+  return values.map((value) => {
+    if (value.startsWith('"') && value.endsWith('"')) {
+      return value.slice(1, -1);
+    }
+
+    return value;
   });
 }
 
