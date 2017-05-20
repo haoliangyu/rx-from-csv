@@ -1,2 +1,5 @@
+## 0.1.1
+  * fix a bug where commas in a string value was incorrectly treated as delimiter.
+
 ## 0.1.0
-  * initial release
+  * initial release.
