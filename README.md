@@ -11,7 +11,7 @@ Work in both JavaScript and TypeScript
 ## Installation
 
 ```
-npm install rx-to-csv
+npm install rx-from-csv
 ```
 
 ## Use
