@@ -1,4 +1,7 @@
 ## 0.1.2
+  * fix typescript typing and use npm5
+
+## 0.1.2
   * fix typo
 
 ## 0.1.1
