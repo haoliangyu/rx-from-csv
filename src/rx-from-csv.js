@@ -4,7 +4,7 @@ import { createReadStream } from 'fs';
 import defaults from 'lodash.defaults';
 
 const defaultCSVOptions = {
-  delimeter: ','
+  delimiter: ','
 };
 
 function removeTextWrapper(text) {
@@ -27,10 +27,10 @@ function fromCSV(path, options) {
 
     reader.on('line', (line) => {
       if (isHeader) {
-        columns = parseRow(line, options.delimeter);
+        columns = parseRow(line, options.delimiter);
         isHeader = false;
       } else {
-        let values = parseRow(line, options.delimeter);
+        let values = parseRow(line, options.delimiter);
         let valueObject = {};
 
         for (let i = 0, n = columns.length; i < n; i++) {
@@ -47,7 +47,7 @@ function fromCSV(path, options) {
   });
 }
 
-function parseRow(row, delimeter) {
+function parseRow(row, delimiter) {
   let values = [];
   let wrapped = false;
   let wordStart = 0;
@@ -55,7 +55,7 @@ function parseRow(row, delimeter) {
   for (let i = 0, n = row.length; i < n; i++) {
     if (row[i] === '"') {
       wrapped = !wrapped;
-    } else if (row[i] === delimeter && !wrapped) {
+    } else if (row[i] === delimiter && !wrapped) {
       values.push(row.slice(wordStart, i));
       wordStart = i + 1;
     }

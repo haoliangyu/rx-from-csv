@@ -1,3 +1,6 @@
+## 0.1.2
+  * fix typo
+
 ## 0.1.1
   * fix a bug where commas in a string value was incorrectly treated as delimiter.
 

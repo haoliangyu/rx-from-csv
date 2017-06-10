@@ -19,7 +19,7 @@ npm install rx-to-csv
 Import this library and it will add a static `fromCSV` operator to the rxjs `Observable` class.
 
 ```
-public fromCSV(path: string, options?: { delimeter?: string }): Observable<T>;
+public fromCSV(path: string, options?: { delimiter?: string }): Observable<T>;
 ```
 
 This operator will load the CSV file from the give path and emit each row as an object, whose keys are column names and values are column values.
@@ -28,7 +28,7 @@ Parameters:
 
   * **path**: csv file path
   * **options**: optional configuration for the csv creation
-    * **delimeter**: a character to separate values. Default: `,`
+    * **delimiter**: a character to separate values. Default: `,`
 
 ## Example
 
