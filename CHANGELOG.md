@@ -1,4 +1,7 @@
-## 0.1.2
+## 0.1.4
+  * add `noHeaderRow` option
+
+## 0.1.3
   * fix typescript typing and use npm5
 
 ## 0.1.2

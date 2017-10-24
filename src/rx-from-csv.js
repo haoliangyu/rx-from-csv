@@ -4,26 +4,24 @@ import { createReadStream } from 'fs';
 import defaults from 'lodash.defaults';
 
 const defaultCSVOptions = {
-  delimiter: ','
+  delimiter: ',',
+  noHeaderRow: false
 };
-
-function removeTextWrapper(text) {
-  if (text.startsWith('"') && text.endsWith('"')) {
-    return text.slice(1, text.length - 1);
-  }
-
-  return text;
-}
 
 function fromCSV(path, options) {
 
   options = defaults(options, defaultCSVOptions);
 
   return Observable.create((subscriber) => {
+
+    if (options.noHeaderRow && !Array.isArray(options.columns)) {
+      throw new Error('No column name is provided.');
+    }
+
     let readStream = createReadStream(path);
     let reader = createInterface({ input: readStream });
-    let isHeader = true;
-    let columns;
+    let isHeader = true && !options.noHeaderRow;
+    let columns = options.columns;
 
     reader.on('line', (line) => {
       if (isHeader) {
