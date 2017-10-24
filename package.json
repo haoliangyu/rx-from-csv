@@ -1,6 +1,6 @@
 {
   "name": "rx-from-csv",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": " RxJS 5 operator to read csv file",
   "main": "dist/rx-from-csv.js",
   "scripts": {
