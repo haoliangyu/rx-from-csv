@@ -1,8 +1,11 @@
+## 0.1.5
+  * update type definition
+
 ## 0.1.4
-  * add `noHeaderRow` option
+  * add `noHeaderRow` and `columns` option
 
 ## 0.1.3
-  * fix typescript typing and use npm5
+  * fix type definition and use npm5
 
 ## 0.1.2
   * fix typo
