@@ -1,18 +1,19 @@
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
 import { createInterface } from 'readline';
 import { createReadStream } from 'fs';
-import defaults from 'lodash.defaults';
+
+const defaults = require('lodash.defaults');
 
 const defaultCSVOptions = {
   delimiter: ',',
   noHeaderRow: false
 };
 
-function fromCSV(path, options) {
+export function fromCSV(path: string, options?: any) {
 
   options = defaults(options, defaultCSVOptions);
 
-  return Observable.create((subscriber) => {
+  return new Observable((subscriber) => {
 
     if (options.noHeaderRow && !Array.isArray(options.columns)) {
       throw new Error('No column name is provided.');
@@ -69,5 +70,3 @@ function parseRow(row, delimiter) {
     return value;
   });
 }
-
-Observable.fromCSV = fromCSV;

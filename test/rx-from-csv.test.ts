@@ -1,10 +1,11 @@
-import chai from 'chai';
+import { Observable } from 'rxjs/Observable';
+import { fromCSV } from '../src/rx-from-csv';
+import { expect } from 'chai';
 import { join } from 'path';
-import { Observable } from 'rxjs';
-import '../src/rx-from-csv';
 
-const expect = chai.expect;
 const noop = () => {};
+
+import '../src/rx-from-csv';
 
 describe('fromCSV()', () => {
 
@@ -12,7 +13,7 @@ describe('fromCSV()', () => {
     let testCSV = join(__dirname, 'csv/test.csv');
     let rows = [];
 
-    Observable.fromCSV(testCSV)
+    fromCSV(testCSV)
       .subscribe((row) => {
         rows.push(row);
       }, noop, () => {
@@ -30,7 +31,7 @@ describe('fromCSV()', () => {
     let testCSV = join(__dirname, 'csv/test.commas.csv');
     let rows = [];
 
-    Observable.fromCSV(testCSV)
+    fromCSV(testCSV)
       .subscribe((row) => {
         rows.push(row);
       }, noop, () => {
@@ -48,7 +49,7 @@ describe('fromCSV()', () => {
     let testCSV = join(__dirname, 'csv/test.undefined.csv');
     let rows = [];
 
-    Observable.fromCSV(testCSV)
+    fromCSV(testCSV)
       .subscribe((row) => {
         rows.push(row);
       }, noop, () => {
@@ -65,7 +66,7 @@ describe('fromCSV()', () => {
     let testCSV = join(__dirname, 'csv/test.delimiter.csv');
     let rows = [];
 
-    Observable.fromCSV(testCSV, { delimiter: '|' })
+    fromCSV(testCSV, { delimiter: '|' })
       .subscribe(
         (row) => rows.push(row),
         noop,
@@ -89,7 +90,7 @@ describe('fromCSV()', () => {
       columns: ['id', 'name']
     };
 
-    Observable.fromCSV(testCSV, options)
+    fromCSV(testCSV, options)
       .subscribe(
         (row) => rows.push(row),
         noop,
@@ -107,7 +108,7 @@ describe('fromCSV()', () => {
   it('should throw an error if noHeaderRow is true but no column name is provided.', (done) => {
     let testCSV = join(__dirname, 'csv/test.csv');
 
-    Observable.fromCSV(testCSV, { noHeaderRow: true })
+    fromCSV(testCSV, { noHeaderRow: true })
       .subscribe(
         noop,
         (err) => {
