@@ -16,13 +16,13 @@ npm install rx-from-csv
 
 ## Use
 
-Import this library and it will add a static `fromCSV` operator to the rxjs `Observable` class.
+This library exposes a static `fromCSV` operator:
 
 ```
-public fromCSV(path: string, options?: object): Observable<T>;
+fromCSV(path: string, options?: object): Observable<T>;
 ```
 
-This operator will load the CSV file from the give path and emit each row as an object, whose keys are column names and values are column values.
+The new `fromCSV` operator will load the CSV file from the give path and emit each row as an object, whose keys are column names and values are column values.
 
 Parameters:
 
@@ -35,8 +35,7 @@ Parameters:
 ## Example
 
 ``` javascript
-import { Observable } from 'rxjs';
-import 'rx-from-csv';
+import { fromCSV } from 'rx-from-csv';
 
 /**
  * For example, there is a data.csv with content
@@ -46,7 +45,7 @@ import 'rx-from-csv';
  * 2,"Tommy"
  */
 
-Observable.fromCSV('data.csv')
+fromCSV('data.csv')
   .subscribe((data) => {
     console.log(data);
   });

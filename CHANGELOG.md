@@ -1,3 +1,7 @@
+## 1.0.0 (2017-12-03)
+  * **(breaking)** directly expose `fromCSV` operator and no longer patch the `Observable`
+  * change from JavaScript to TypeScript
+
 ## 0.1.5
   * update type definition
 
